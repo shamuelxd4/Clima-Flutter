@@ -7,7 +7,10 @@ class Networking {
   final String url;
 
   Future getData() async {
-    http.Response response = await http.get(Uri.parse(url));
+    // var uri = Uri.https('api.openweathermap.org','api.openweathermap.org/data/2.5/weather', {'q': '{http}'});
+    var uri = Uri.parse(url);
+
+    http.Response response = await http.get(uri);
     if (response.statusCode == 200) {
       //String data = response.body;
       return jsonDecode(response.body.toString());
